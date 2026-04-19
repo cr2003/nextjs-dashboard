@@ -1,10 +1,7 @@
+// app/query/route.ts
 import { sql } from '@vercel/postgres';
 
-// DELETE the 'import postgres' line
-// DELETE the 'const sql = postgres...' line
-
 async function listInvoices() {
-  // Now this uses the 'sql' we imported on Line 1
   const data = await sql`
     SELECT invoices.amount, customers.name
     FROM invoices
@@ -20,6 +17,8 @@ export async function GET() {
     const result = await listInvoices();
     return Response.json(result);
   } catch (error) {
-    return Response.json({ error: error.message }, { status: 500 });
+    // Handling the 'unknown' type error by checking if it's an instance of Error
+    const errorMessage = error instanceof Error ? error.message : 'An unknown error occurred';
+    return Response.json({ error: errorMessage }, { status: 500 });
   }
 }
