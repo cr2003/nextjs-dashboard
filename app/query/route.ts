@@ -14,3 +14,12 @@ async function listInvoices() {
 
   return data.rows;
 }
+
+export async function GET() {
+  try {
+    const result = await listInvoices();
+    return Response.json(result);
+  } catch (error) {
+    return Response.json({ error: error.message }, { status: 500 });
+  }
+}
