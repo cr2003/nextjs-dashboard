@@ -31,6 +31,6 @@
     "app/lib/placeholder-data.ts",
     "scripts/seed.js",
     ".next/dev/types/**/*.ts"
-, "app/query/route.ts_bad"  ],
+, "app/query/route.ts_bad", "app/ui/invoices/edit-form.crv_tsx"  ],
   "exclude": ["node_modules"]
 }
